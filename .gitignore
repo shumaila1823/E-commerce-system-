@@ -1,0 +1,38 @@
+# 🐍 Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# 🌐 Virtual environments
+venv/
+env/
+ENV/
+.venv/
+.ENV/
+
+# 📝 Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# 🧪 Test results and logs
+*.log
+*.tmp
+
+# 💻 IDE and editor settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# 🧾 OS files
+.DS_Store
+Thumbs.db
+
+# 🔒 Sensitive files (example: secrets or environment config)
+.env
+.env.*
+
+# 🧪 Build and distribution folders
+build/
+dist/
+*.egg-info/
