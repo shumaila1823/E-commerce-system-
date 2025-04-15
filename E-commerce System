@@ -50,6 +50,40 @@ class Order:
         self.customer.cart.items.clear()
         return f"Order processed for {self.customer.name}. Total: ${self.total_price:.2f}"
 
+users = []
+
+def register():
+    print("\n🔐 Register")
+    name = input("Enter your name: ")
+    username = input("Choose a username: ")
+    password = input("Choose a password: ")
+
+    for user in users:
+        if user['username'] == username:
+            print("❌ Username already taken.")
+            return None
+
+    users.append({
+        'username': username,
+        'password': password,
+        'name': name
+    })
+
+    print(f"✅ Registered successfully! Welcome, {name}.")
+    return Customer(name)
+
+def login():
+    print("\n🔑 Login")
+    username = input("Username: ")
+    password = input("Password: ")
+
+    for user in users:
+        if user['username'] == username and user['password'] == password:
+            print(f"✅ Welcome back, {user['name']}!")
+            return Customer(user['name'])
+
+    print("❌ Invalid credentials.")
+    return None
 # Example usage
 product1 = Product("Laptop", 1000, 5)
 product2 = Product("Phone", 500, 10)
@@ -60,3 +94,7 @@ customer.add_to_cart(product2, 2)
 
 order = Order(customer)
 print(order.process_order())# E-commerce-system-
+print(order.process_order())  # This will show empty cart if called again
+
+if __name__ == "__main__":
+    main()
