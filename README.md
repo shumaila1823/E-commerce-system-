@@ -12,8 +12,15 @@ Users can browse products, add items to a cart, and simulate placing an order.
 - Remove items from cart
 - View total price
 - Simulate order checkout
+- 
+🌟 Feature Ideas to Enhance Your E-Commerce System
+ User Accounts
+Register/login system with basic authentication
 
----
+Store user info (name, address, order history)
+
+Different roles: Admin vs Customer
+
 
 ## 🛠 Technologies Used
 
