@@ -38,13 +38,29 @@ class ShoppingCart:
             return True
         return False
 
+    def view_cart(self):
+        if not self.items:
+            print("🛒 Cart is empty.")
+            return
+        print("\n🛍️ Your Shopping Cart:")
+        for product, qty in self.items.items():
+            print(f" - {product.name} x{qty} @ ${product.price} each = ${product.price * qty}")
+
     def apply_discount(self, percentage):
         return sum(product.price * qty * (1 - percentage / 100) for product, qty in self.items.items())
 
+    def apply_discount_code(self, code):
+        DISCOUNT_CODES = {"SAVE10": 10, "WELCOME20": 20}
+        percentage = DISCOUNT_CODES.get(code.upper(), 0)
+        return self.apply_discount(percentage)
+
 class Order:
-    def __init__(self, customer):
+    def __init__(self, customer, discount_code=None):
         self.customer = customer
-        self.total_price = customer.cart.apply_discount(0)
+        if discount_code:
+            self.total_price = customer.cart.apply_discount_code(discount_code)
+        else:
+            self.total_price = customer.cart.apply_discount(0)count(0)
 
     def process_order(self):
         self.customer.cart.items.clear()
@@ -58,5 +74,8 @@ customer = Customer("Alice")
 customer.add_to_cart(product1, 1)
 customer.add_to_cart(product2, 2)
 
-order = Order(customer)
-print(order.process_order())# E-commerce-system-
+customer.cart.view_cart()
+
+# Apply discount and place order
+order = Order(customer, discount_code="SAVE10")
+print(order.process_order())
