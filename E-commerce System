@@ -60,7 +60,7 @@ class Order:
         if discount_code:
             self.total_price = customer.cart.apply_discount_code(discount_code)
         else:
-            self.total_price = customer.cart.apply_discount(0)count(0)
+            self.total_price = customer.cart.apply_discount(0)
 
     def process_order(self):
         self.customer.cart.items.clear()
